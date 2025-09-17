@@ -306,29 +306,28 @@ window.addEventListener('keydown', function(e) {
 });
 
 // Make 2sp command available
-window['2sp'] = window.spawnMaxTile;
-
-// Function to fill the board to simulate game over
-GameManager.prototype.skipToEnd = function() {
-  this.setup(); // Reset the game to a clean state
-  var value = 2; // Starting tile value
-  for (var x = 0; x < this.size; x++) {
-    for (var y = 0; y < this.size; y++) {
-      if (this.grid.cellAvailable({x: x, y: y})) {
-        var tile = new Tile({x: x, y: y}, value);
-        this.grid.insertTile(tile);
-        value = value * 2; // Increment value for next tile
-      }
-    }
+// Make the function available globally for console access
+window.spawnMaxTile = function() {
+  if (typeof GM !== 'undefined') {
+    GM.spawnTile(2417851639229258349412352);
+  } else {
+    console.log("Game not initialized yet!");
   }
-  this.over = true; // Set game over state
-  this.actuate();
-  console.log("Skipped to end!");
 };
 
+window.spawnTile = function(value) {
+  if (typeof GM !== 'undefined') {
+    GM.spawnTile(value);
+  } else {
+    console.log("Game not initialized yet!");
+  }
+};
 
+// Make 2sp command available
+window['2sp'] = window.spawnMaxTile;
 
-window.skipToEnd = function() {
+// Make skipToEnd command available
+window['skipToEnd'] = function() {
   if (typeof GM !== 'undefined') {
     GM.skipToEnd();
   } else {
