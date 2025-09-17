@@ -36,13 +36,14 @@ window.requestAnimationFrame(function(){
         devOptions.style.display = "block";
       }
     } else if (inputValue.toLowerCase() === "2sp") {
-      GM.spawnTile(2417851639229258349412352);
+      window.spawnTile(2417851639229258349412352);
     } else if (inputValue.match(/^\d+k$/i)) {
       var value = parseInt(inputValue.slice(0, -1)) * 1000;
-      GM.spawnTile(value);
+      window.spawnTile(value);
     } else if (inputValue.match(/^\d+m$/i)) {
       var value = parseInt(inputValue.slice(0, -1)) * 1000000;
-      GM.spawnTile(value);
+      window.spawnTile(value);
+
     } else {
       var time = parseInt(inputValue);
       if (!isNaN(time)) {
