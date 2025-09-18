@@ -309,9 +309,20 @@ window.addEventListener('keydown', function(e) {
 // Make the function available globally for console access
 window.spawnMaxTile = function() {
   if (typeof GM !== 'undefined') {
-    GM.spawnTile(2417851639229258349412352);
+    GM.spawnMaxTile();
   } else {
     console.log("Game not initialized yet!");
+  }
+};
+
+GameManager.prototype.spawnTile = function(value) {
+  if (this.grid.cellsAvailable()) {
+    var tile = new Tile(this.grid.randomAvailableCell(), value);
+    this.grid.insertTile(tile);
+    this.actuate();
+    console.log("Spawned tile with value " + value + "!");
+  } else {
+    console.log("No available cells to spawn tile!");
   }
 };
 
