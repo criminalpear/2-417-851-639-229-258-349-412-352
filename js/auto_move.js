@@ -9,7 +9,8 @@ function start_auto_move(){
   for (var i = 0; i < auto_move_threads; i++) {
     auto_move_interval_ids.push(setInterval(function() {
       var direction = Math.floor(Math.random() * 4);
-      GM.move(direction);
+      window.GM.move(direction);
+
     }, auto_move_time));
   }
 }
