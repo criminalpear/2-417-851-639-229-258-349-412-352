@@ -1,6 +1,6 @@
-var GM;
+// Ensure GM is globally accessible and initialized once
+window.GM = null;
 
-// Wait till the browser is ready to render the game (avoids glitches)
 window.requestAnimationFrame(function () {
-  GM = new GameManager(9, KeyboardInputManager, HTMLActuator, LocalStorageManager);
+  window.GM = new GameManager(9, KeyboardInputManager, HTMLActuator, LocalStorageManager);
 });
